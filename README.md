@@ -4,9 +4,9 @@
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-DA7857)](https://agentskills.io)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](SKILL.md)
 
-> Agent skill that creates and improves other skills from your coding sessions. Zero dependencies. Works with any agent.
-
 Ancient arthropods grow by molting — shedding their old shell to emerge larger and stronger. Your agent skills should do the same.
+
+Create and improve agent skills automatically from your coding sessions. Zero dependencies. Works with any agent.
 
 ## Install
 
@@ -42,15 +42,16 @@ All output is Markdown. No Python, no scripts, no external dependencies. Works a
 
 ## Usage
 
-When a session involves trial-and-error, error recovery, or non-obvious workarounds, the agent will propose creating or improving a skill from the experience. You decide whether to proceed.
+After installing, skill-molt works automatically. When a session involves trial-and-error, error recovery, or non-obvious workarounds, the agent will propose creating or improving a skill from the experience.
 
-You can also trigger it manually:
+You can also trigger it directly:
 
 ```text
 > What did we learn from this session?
+> Improve the deployment skill with what we learned today
 ```
 
-The agent proposes changes for your review — nothing is applied without your approval.
+The agent proposes changes for your review — nothing is saved without your approval. See [`examples/molt-cycle.md`](examples/molt-cycle.md) for a full create → improve walkthrough.
 
 ## Core Principle
 
