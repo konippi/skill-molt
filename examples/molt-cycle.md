@@ -1,0 +1,91 @@
+# Molt Cycle Example
+
+A complete example of creating a skill, then improving it after a second session. Commands and tools shown are illustrative — adapt to your actual stack.
+
+## Session 1: Initial Creation
+
+**Task**: Set up CI/CD pipeline for a Next.js project on Vercel.
+
+**Observe Phase output**:
+
+```markdown
+### Non-Obvious Lessons
+1. `vercel.json` rewrites must be defined BEFORE catch-all routes — order matters
+2. Preview deployments use a different `NEXT_PUBLIC_API_URL` than production — must set per-environment
+3. Build cache breaks when `next.config.js` changes — need `vercel --force` after config edits
+4. The `vercel env pull` command overwrites `.env.local` without warning
+```
+
+**Generated Skill** (`vercel-deployment/SKILL.md`):
+
+```markdown
+---
+name: vercel-deployment
+description: >-
+  Use when deploying to Vercel, configuring preview environments, or
+  debugging deployment failures in Next.js projects. Do NOT use for
+  local development setup or non-Vercel hosting.
+---
+
+# Vercel Deployment
+
+## Workflow
+
+1. Read `vercel.json` — check that rewrites are ordered before catch-all routes
+2. Verify environment variables: `vercel env ls`
+   - Confirm `NEXT_PUBLIC_API_URL` is set separately for Preview and Production
+3. Deploy: `vercel --prod`
+   - If deploy fails after config change → `vercel --force --prod`
+4. Verify: check the deployment URL returns 200
+
+## Rules
+
+- Rewrite rules in `vercel.json` are order-dependent — specific routes before catch-all
+- Never run `vercel env pull` without backing up `.env.local` first — it overwrites silently
+
+## Gotchas
+
+- Build cache persists across deploys. After changing `next.config.js`, use `--force` or the build uses stale config.
+- Preview and Production environments have separate env vars. Setting one does not set the other.
+```
+
+## Session 2: Improvement (The Molt)
+
+**Task**: Debug a failing preview deployment. Discovered new knowledge.
+
+**Observe Phase output**:
+
+```markdown
+### Non-Obvious Lessons
+1. Vercel's build timeout is 45 minutes — our monorepo build hits 40min, dangerously close
+2. `vercel logs <url>` only shows last 1000 lines — for full logs, use `vercel logs <url> --all`
+3. The "Functions" tab in Vercel dashboard shows cold start times — useful for debugging slow API routes
+```
+
+**Improved Skill** (changes marked with `+` and `-`):
+
+```diff
+  ## Workflow
+
+  1. Read `vercel.json` — check that rewrites are ordered before catch-all routes
+  2. Verify environment variables: `vercel env ls`
+     - Confirm `NEXT_PUBLIC_API_URL` is set separately for Preview and Production
+  3. Deploy: `vercel --prod`
+     - If deploy fails after config change → `vercel --force --prod`
++ 4. Check logs: `vercel logs <deployment-url> --all`
++    - Default `vercel logs` only shows last 1000 lines — use `--all` for full output
+  5. Verify: check the deployment URL returns 200
+
+  ## Gotchas
+
+  - Build cache persists across deploys. After changing `next.config.js`, use `--force`.
+  - Preview and Production environments have separate env vars.
++ - Build timeout is 45 minutes. Monorepo builds approaching 40min need optimization or `turbo` caching.
++ - `vercel logs` without `--all` truncates to 1000 lines. Always use `--all` for debugging.
+```
+
+## What Happened
+
+1. **Session 1**: 4 non-obvious lessons → new skill created
+2. **Session 2**: 3 new lessons → 2 added to existing skill, 1 discarded (dashboard tip was too UI-specific)
+3. **The molt**: Old shell shed, new shell grown. The skill got stronger without getting bloated.
