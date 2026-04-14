@@ -61,7 +61,7 @@ If it's discoverable from the codebase — README, config files, code comments �
 
 This follows the skill library concept from [Voyager (NeurIPS 2023)](https://arxiv.org/abs/2305.16291), where agents accumulate reusable skills from experience to compound their capabilities over time. skill-molt applies this to coding agents: real session failures become tomorrow's procedural knowledge.
 
-Unlike Voyager's game environment, coding environments lack an automatic verification loop — so skill-molt keeps a human in the loop for review, and uses natural-language procedures instead of executable code to stay agent-agnostic.
+Unlike Voyager's game environment, coding environments lack an automatic verification loop — so skill-molt keeps a human in the loop for review, and uses natural-language procedures instead of executable code to stay agent-agnostic. The improve cycle is inspired by [ACE (ICLR 2026)](https://arxiv.org/abs/2510.04618), which shows that treating context as an evolving playbook — accumulating and refining strategies through experience — outperforms static approaches.
 
 ## Contributing
 
