@@ -4,7 +4,6 @@ description: "Use after completing a task that involved significant trial-and-er
 license: MIT
 metadata:
   author: konippi
-  version: "1.0.0"
 ---
 
 # Skill Molt
