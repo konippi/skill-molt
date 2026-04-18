@@ -103,7 +103,7 @@ The agent validates the skill (6 pass/fail checks), then presents it for your re
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). The easiest way to contribute is adding real-world examples to `examples/`.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
