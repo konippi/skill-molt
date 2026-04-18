@@ -1,6 +1,6 @@
 # Good Skill Example
 
-This is an example of a well-written skill extracted from a real coding session.
+This is an example of a well-written skill extracted from a real session.
 
 ## The Skill
 

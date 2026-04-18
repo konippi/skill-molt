@@ -1,7 +1,7 @@
 ---
 name: skill-molt
 description: >-
-  Use after completing a coding task that involved significant
+  Use after completing a task that involved significant
   trial-and-error, unexpected behavior, or non-obvious workarounds.
   Use when the user says "what did we learn" or "improve skills".
   Do NOT use for straightforward tasks, simple bug fixes, or when
@@ -11,12 +11,12 @@ description: >-
 license: MIT
 metadata:
   author: konippi
-  version: "0.1.0"
+  version: "1.0.0"
 ---
 
 # Skill Molt
 
-Create and improve agent skills by reflecting on coding sessions. Extract only what you could NOT have known before this session.
+Create and improve agent skills by reflecting on sessions. Extract only what you could NOT have known before this session.
 
 ## Core Principles
 
