@@ -6,22 +6,24 @@ Run 6 pass/fail checks on a generated or updated skill. All must pass before pre
 
 ### Check 1: Path Check
 
-Verify every file path mentioned in the skill exists in the project.
+Verify every file path and resource reference mentioned in the skill exists or is valid.
 
-- Read the skill body and extract all file paths and directory references
-- For each path, confirm it exists
+- Read the skill body and extract all file paths, directory references, URLs, and resource identifiers
+- For each file path, confirm it exists in the project
+- For each URL or API endpoint, confirm it is well-formed and uses the expected protocol
 - Reject any path that traverses outside the project directory (e.g., `../../`, `/etc/`, absolute paths outside the project root)
-- **Pass**: All referenced paths exist and are within the project
+- **Pass**: All referenced paths exist and are within the project; all URLs are well-formed
 - **Fail**: List the missing or out-of-scope paths. Suggest corrections.
 
 ### Check 2: Command Check
 
-Verify every command mentioned in the skill is executable.
+Verify every command and tool reference mentioned in the skill is executable or valid.
 
-- Extract all shell commands from the skill body
-- For each command, confirm the binary exists (e.g., `which pnpm`)
+- Extract all shell commands and CLI tool references from the skill body
+- For each command, confirm the binary exists (e.g., `which pnpm`, `which aws`)
+- For non-CLI tools (e.g., API calls, dashboard steps), confirm the tool or service name is correct
 - Flag dangerous patterns: `rm -rf` with broad paths, piped installs (`curl | bash`), `sudo`, system-level config changes (`/etc/`). If flagged, add a warning comment in the skill.
-- **Pass**: All commands are available and no unacknowledged dangerous patterns
+- **Pass**: All commands and tools are available and no unacknowledged dangerous patterns
 - **Fail**: List unavailable commands or unflagged dangerous patterns. Suggest alternatives.
 
 ### Check 3: Relevance Check

@@ -1,6 +1,6 @@
 # Observe Phase
 
-Reflect on the coding session to extract non-obvious knowledge. Answer these 5 questions honestly.
+Reflect on the session to extract non-obvious knowledge. Answer these 5 questions honestly.
 
 ## The 5 Questions
 
@@ -9,6 +9,7 @@ Reflect on the coding session to extract non-obvious knowledge. Answer these 5 q
 Focus on surprises. Configuration quirks, undocumented requirements, unexpected behavior.
 
 - ✅ "The test DB requires DATABASE_URL set BEFORE running migrations, not after"
+- ✅ "The CRM API requires OAuth token refresh before bulk export — the docs say API key is enough"
 - ❌ "The project uses TypeScript" (discoverable from package.json)
 
 ### Q2: What was the first approach you tried that DIDN'T work, and why?
@@ -23,6 +24,7 @@ Capture the failure-to-success pattern. This is the highest-signal knowledge.
 Tooling gotchas, build quirks, environment requirements.
 
 - ✅ "`pnpm test:e2e` silently requires Docker running — no error message, just hangs"
+- ✅ "`aws s3 cp` exits 0 even when a large file upload is incomplete — no error in CLI output"
 - ❌ "`npm install` installs dependencies" (common knowledge)
 
 ### Q4: What strategy should another agent follow for a similar task in this repo?
@@ -37,6 +39,7 @@ Distill the approach, not the specifics. Think "context-first" — what to read 
 Capture validation knowledge. What tests to run, what to inspect.
 
 - ✅ "After changing auth logic, run `pnpm test:auth` AND manually check the `/api/me` endpoint — the test suite doesn't cover token refresh"
+- ✅ "After updating the data pipeline, check the CloudWatch metrics for record counts — the Step Functions execution reports success even on partial loads"
 - ❌ "Run the tests" (too vague)
 
 ## Output Format
