@@ -1,6 +1,6 @@
 ---
 name: skill-molt
-description: "Use after completing a task that involved significant trial-and-error, unexpected behavior, or non-obvious workarounds. Use when the user says 'what did we learn' or 'improve skills'. Do NOT use for straightforward tasks, simple bug fixes, or when the session went smoothly without surprises. Do NOT use when the user asks about skill-molt itself (installation, configuration, usage)."
+description: "Use after completing a task that involved significant trial-and-error, unexpected behavior, or non-obvious workarounds. Use when the user says 'what did we learn', 'improve skills', or 'shrink skills'. Also use when a skill feels outdated, bloated, or leads to wrong outcomes. Do NOT use for straightforward tasks, simple bug fixes, or when the session went smoothly without surprises. Do NOT use when the user asks about skill-molt itself (installation, configuration, usage)."
 license: MIT
 metadata:
   author: konippi
@@ -24,7 +24,7 @@ Determine which phase to execute:
 - **"Improve skills"** or existing skill feels outdated → Read `references/observe-phase.md`, then `references/improve-phase.md`
 - **"Shrink skills"** or skill feels bloated or agent follows a skill instruction that leads to a wrong outcome → Read `references/decay-phase.md`
 
-After generating or improving, always run `references/validate-phase.md` before presenting to the user.
+After generating, improving, or applying decay, always run `references/validate-phase.md` before presenting to the user.
 
 ## When NOT to Create a Skill
 
@@ -39,6 +39,7 @@ Stop if ANY apply:
 
 ```text
 Observe → Generate or Improve → Validate → Present to user
+Decay → Validate → Present to user
 ```
 
 Each phase has detailed instructions in `references/`. Load them only when you reach that phase.
