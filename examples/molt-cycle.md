@@ -1,6 +1,6 @@
 # Molt Cycle Example
 
-A complete example of creating a skill, then improving it after a second session. Commands and tools shown are illustrative — adapt to your actual stack.
+A complete example of creating a skill, then improving it, then decaying it. Commands and tools shown are illustrative — adapt to your actual stack.
 
 ## Session 1: Initial Creation
 
@@ -84,38 +84,15 @@ description: >-
 + - `vercel logs` without `--all` truncates to 1000 lines. Always use `--all` for debugging.
 ```
 
-## What Happened
-
-1. **Session 1**: 4 non-obvious lessons → new skill created
-2. **Session 2**: 3 new lessons → 2 added to existing skill, 1 discarded (dashboard tip was too UI-specific)
-3. **Session 3**: Decay review → 2 lines removed, 1 rewritten. The skill got smaller and more accurate.
-4. **The molt**: Skills grow, shed, and shrink. That's the cycle.
-
 ## Session 3: Decay (The Shed)
 
 **Trigger**: The agent followed the skill's `--force` instruction but Vercel's behavior had changed — `--force` was no longer needed after a platform update that fixed cache invalidation.
 
-**Decay Phase evaluation** (3 tests per line):
+**Decay Phase output**:
 
-```markdown
-### Line: "After changing next.config.js, use --force or the build uses stale config"
-- Model internalization: ❌ Not stale — silent cache behavior isn't common knowledge
-- Upstream accuracy: ✅ STALE — Vercel fixed automatic cache invalidation in March 2026
-- Inferability shift: N/A
-→ Remove or rewrite
-
-### Line: "Build timeout is 45 minutes"
-- Model internalization: ✅ STALE — this is now in Vercel's official docs and models know it
-- Upstream accuracy: ✅ Still true
-- Inferability shift: ✅ STALE — `vercel.json` now shows `"buildTimeout": 2700` with a comment
-→ Remove
-
-### Line: "vercel env pull overwrites .env.local without warning"
-- Model internalization: ❌ Not stale — still a common gotcha
-- Upstream accuracy: ❌ Still true, no fix shipped
-- Inferability shift: ❌ No docs or error message added
-→ Keep
-```
+- "use `--force` after config change" → STALE (Vercel fixed cache invalidation)
+- "Build timeout is 45 minutes" → STALE (now in official docs and `vercel.json`)
+- "`vercel env pull` overwrites `.env.local`" → Keep (still undocumented)
 
 **Decayed Skill** (changes marked with `+` and `-`):
 
@@ -138,3 +115,10 @@ description: >-
 - - Build timeout is 45 minutes. Monorepo builds approaching 40min need optimization or `turbo` caching.
   - `vercel logs` without `--all` truncates to 1000 lines. Always use `--all` for debugging.
 ```
+
+## What Happened
+
+1. **Session 1**: 4 non-obvious lessons → new skill created
+2. **Session 2**: 3 new lessons → 2 added to existing skill, 1 discarded (dashboard tip was too UI-specific)
+3. **Session 3**: Decay review → 2 lines removed. The skill got smaller and more accurate.
+4. **The molt**: Skills grow, shed, and shrink. That's the cycle.
