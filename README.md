@@ -33,6 +33,8 @@ Fully automated skill generation doesn't work either — [SkillsBench (2026)](ht
 
 skill-molt bridges this: it extracts non-obvious lessons from real sessions through human-AI collaboration, validates quality, and structures them into skills that actually help.
 
+Skills also decay silently — models internalize knowledge that was once non-obvious, upstream APIs change, and stale instructions [pollute context at real cost](https://arxiv.org/abs/2602.14690). skill-molt detects when skills need shedding, not just growing.
+
 ## Core Principle
 
 > Only include what the agent could NOT have known before the session.
@@ -51,6 +53,7 @@ After a session that involved trial-and-error or non-obvious workarounds, skill-
 2. **Generate** — Create a new SKILL.md from the lessons learned
 3. **Improve** — Update an existing skill with new knowledge (shed the old, keep the new)
 4. **Validate** — Run 6 pass/fail checks to ensure quality
+5. **Decay** — Detect when skills need shedding, not just growing
 
 All output is Markdown. No Python, no scripts, no external dependencies. Works alongside existing skills — it creates new ones for uncovered domains and improves existing ones when it finds new knowledge.
 

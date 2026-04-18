@@ -1,6 +1,6 @@
 # Improve Phase
 
-Update an existing skill with new knowledge from the current session. This is the "molt" — shedding outdated content and growing new.
+Update an existing skill with new knowledge from the current session. This is the "molt" — shedding outdated content, growing new knowledge, and shrinking to essentials. A molt isn't always about getting bigger.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Compare session lessons against the existing skill:
 
 - **New**: Lesson not covered by any existing line → add it
 - **Updated**: Lesson contradicts or refines an existing line → replace it
-- **Stale**: Existing line references something that no longer exists or is now inferable → remove it
+- **Stale**: Existing line references something that no longer exists or is now inferable → remove it. See `references/decay-phase.md` for detailed staleness criteria.
 - **Unchanged**: Existing line is still accurate and non-inferable → keep it
 
 ### Step 3: Apply changes
