@@ -2,17 +2,11 @@ name: Bug Report
 description: Report a problem with skill-molt
 labels: [bug]
 body:
-  - type: dropdown
+  - type: input
     id: agent
     attributes:
       label: Agent
-      options:
-        - Claude Code
-        - Kiro CLI
-        - Codex
-        - Cursor
-        - Gemini CLI
-        - Other
+      description: Which agent were you using? (e.g., Claude Code, Kiro CLI, OpenClaw, Codex, Cursor, Gemini CLI)
     validations:
       required: true
 
