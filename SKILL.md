@@ -1,13 +1,6 @@
 ---
 name: skill-molt
-description: >-
-  Use after completing a task that involved significant
-  trial-and-error, unexpected behavior, or non-obvious workarounds.
-  Use when the user says "what did we learn" or "improve skills".
-  Do NOT use for straightforward tasks, simple bug fixes, or when
-  the session went smoothly without surprises.
-  Do NOT use when the user asks about skill-molt itself (installation,
-  configuration, usage).
+description: "Use after completing a task that involved significant trial-and-error, unexpected behavior, or non-obvious workarounds. Use when the user says 'what did we learn' or 'improve skills'. Do NOT use for straightforward tasks, simple bug fixes, or when the session went smoothly without surprises. Do NOT use when the user asks about skill-molt itself (installation, configuration, usage)."
 license: MIT
 metadata:
   author: konippi
