@@ -22,6 +22,7 @@ Determine which phase to execute:
 
 - **"What did we learn?"** or session involved trial-and-error, error recovery, or non-obvious workarounds → Read `references/observe-phase.md`, then `references/generate-phase.md`
 - **"Improve skills"** or existing skill feels outdated → Read `references/observe-phase.md`, then `references/improve-phase.md`
+- **"Shrink skills"** or skill feels bloated or agent follows a skill instruction that leads to a wrong outcome → Read `references/decay-phase.md`
 
 After generating or improving, always run `references/validate-phase.md` before presenting to the user.
 
